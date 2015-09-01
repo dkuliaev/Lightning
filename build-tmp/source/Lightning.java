@@ -19,35 +19,39 @@ int startY = 0;
 int endX = 150;
 int endY = 0;
 
-
-
-
-
 public void setup()
 {
-	background(100, 100, 100);
-	size(300,300);
+	background(200, 200, 200);
+	size(520,500);
 }
 
 public void draw()
 {
 	drawLightning();
-	endX = endX + (int)(Math.random() * 9 - 4.5f);
-	endY = endY + (int)(Math.random() * 3);
-
 }
 
 public void drawLightning()
 {
-	stroke(255, 255, 255);
-	line(startX, startY, endX, endY);
-
+	stroke((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255));
+	
+	while(endY < 500)
+	{
+		endY = startY + ((int)(Math.random() * 12 + 2));
+		endX = startX + ((int)(Math.random() * 20 - 10));
+		line(startX, startY, endX, endY);
+		startX = endX;
+		startY = endY;
+	}
 
 }
 
 public void mousePressed()
 {
-
+	background(200, 200, 200);
+	startX = (int)(Math.random() * 500);
+	startY = 0;
+	endX = 150;
+	endY = 0;
 }
 
   static public void main(String[] passedArgs) {
